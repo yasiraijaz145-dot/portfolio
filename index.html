@@ -1,0 +1,150 @@
+
+raw
+Index · HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Yasir Uddin - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050508;--surface:#0d0d14;--border:#1e1e2e;--accent:#7c6aff;--accent2:#ff6a9b;--accent3:#6affd4;--text:#e8e8f0;--muted:#6b6b80}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;overflow-x:hidden;cursor:none}
+.cursor{width:10px;height:10px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:screen;transition:transform .08s}
+.cursor-ring{width:32px;height:32px;border:1px solid var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;opacity:.4}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.35}
+nav{position:fixed;top:0;width:100%;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:rgba(5,5,8,.88);backdrop-filter:blur(20px);z-index:100}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);text-decoration:none}.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{font-size:.75rem;color:var(--muted);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}.nav-links a:hover{color:var(--accent)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.grid-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(124,106,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,106,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-orb{position:absolute;right:-10%;top:10%;width:60vmax;height:60vmax;background:radial-gradient(circle,rgba(124,106,255,.12) 0%,transparent 65%);pointer-events:none;animation:pulse 8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.1);opacity:1}}
+.hero-tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}.hero-tag::before{content:'';width:32px;height:1px;background:var(--accent)}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(3.5rem,10vw,8rem);font-weight:800;line-height:.92;letter-spacing:-.04em;margin-bottom:2rem}
+.hero h1 .outline{-webkit-text-stroke:1px var(--accent);color:transparent;display:block}
+.hero-desc{font-size:.9rem;line-height:1.85;color:var(--muted);max-width:460px;margin-bottom:3rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{padding:.85rem 2rem;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary{background:var(--accent);color:#fff;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)}.btn-primary:hover{background:#9b8dff;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+section{padding:5.5rem 3rem}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.skill-card{background:var(--surface);padding:2rem;transition:background .2s}.skill-card:hover{background:#11111b}
+.skill-icon{font-size:1.4rem;margin-bottom:1rem}
+.skill-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.6rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.9rem}
+.tag{font-size:.62rem;letter-spacing:.1em;padding:.2rem .6rem;border:1px solid var(--border);color:var(--muted);text-transform:uppercase}
+.tag.a{border-color:var(--accent);color:var(--accent)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+#projects{background:var(--surface)}
+.project-card{background:var(--surface);border:1px solid var(--border);padding:2rem;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}.project-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .2s}.project-card:hover::before{opacity:1}
+.pnum{font-size:.63rem;color:var(--accent);letter-spacing:.15em;margin-bottom:1.2rem}
+.ptitle{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.7rem;line-height:1.2}
+.pdesc{font-size:.8rem;color:var(--muted);line-height:1.75;margin-bottom:1.4rem}
+.plinks{display:flex;gap:1rem}
+.plink{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}.plink:hover{color:var(--accent3)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-text p{font-size:.87rem;line-height:1.9;color:var(--muted);margin-bottom:1.2rem}.about-text p strong{color:var(--text)}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.stat{background:var(--surface);padding:2rem;text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.5rem}
+.stat-lbl{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.contact-inner{max-width:580px;margin:0 auto;text-align:center}
+.contact-inner h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1;margin-bottom:1.5rem}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-top:2.5rem}
+footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer p{font-size:.7rem;color:var(--muted)}
+.fade-up{opacity:0;transform:translateY(28px);animation:fadeUp .7s forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hero{padding:7rem 1.5rem 3rem}section{padding:3.5rem 1.5rem}.about-grid{grid-template-columns:1fr;gap:2rem}footer{padding:1.5rem}}
+</style>
+</head>
+<body>
+<div class="cursor" id="c"></div>
+<div class="cursor-ring" id="cr"></div>
+<nav>
+  <a class="nav-logo" href="#">DEV<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<section class="hero">
+  <div class="grid-lines"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-tag fade-up">Muhammad Yasir Uddin</div>
+  <h1 class="fade-up d1">Building<br><span class="outline">Tomorrow</span></h1>
+  <p class="hero-desc fade-up d2">Full-stack developer & ML enthusiast. I build intelligent systems, beautiful interfaces, and scalable pipelines. Applying CS to problems that matter.</p>
+  <div class="hero-btns fade-up d3">
+    <a href="#projects" class="btn btn-primary">View Projects →</a>
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+  </div>
+</section>
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-title">Full-Stack Development</div><p style="font-size:.8rem;color:var(--muted);line-height:1.7">End-to-end web apps — REST APIs, reactive frontends, auth systems, deployment pipelines.</p><div class="tags"><span class="tag a">React</span><span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">PostgreSQL</span></div></div>
+    <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-title">AI & Machine Learning</div><p style="font-size:.8rem;color:var(--muted);line-height:1.7">Model training, NLP pipelines, LLM integrations. Building systems that learn and adapt.</p><div class="tags"><span class="tag a">PyTorch</span><span class="tag">scikit-learn</span><span class="tag">HuggingFace</span><span class="tag">LangChain</span></div></div>
+    <div class="skill-card"><div class="skill-icon">🔄</div><div class="skill-title">Automation & Pipelines</div><p style="font-size:.8rem;color:var(--muted);line-height:1.7">Web scraping, data pipelines, CI/CD. Turning manual workflows into automated systems.</p><div class="tags"><span class="tag a">Playwright</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span><span class="tag">Redis</span></div></div>
+    <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-title">Data Science & Viz</div><p style="font-size:.8rem;color:var(--muted);line-height:1.7">Statistical modeling, exploratory analysis, and dashboards that communicate insights clearly.</p><div class="tags"><span class="tag a">Pandas</span><span class="tag">D3.js</span><span class="tag">Plotly</span><span class="tag">SQL</span></div></div>
+  </div>
+</section>
+<section id="projects">
+  <div class="section-label">Selected Work</div>
+  <div class="projects-grid">
+    <div class="project-card"><div class="pnum">01 — Automation</div><div class="ptitle">Web Scraper Pipeline</div><p class="pdesc">Playwright-based scraping system with scheduling, dedup, and live dashboard. Handles JS-heavy SPAs, proxy rotation, exports to JSON/CSV/Postgres.</p><div class="tags" style="margin-bottom:1.4rem"><span class="tag">Playwright</span><span class="tag">FastAPI</span><span class="tag">Redis</span><span class="tag">Docker</span></div><div class="plinks"><a href="https://github.com" class="plink">↗ GitHub</a><a href="#" class="plink">↗ Live Demo</a></div></div>
+    <div class="project-card"><div class="pnum">02 — AI / LLM</div><div class="ptitle">AI Chat Dashboard</div><p class="pdesc">Multi-model chat interface with conversation history, token tracking, prompt templates. Supports multiple LLMs. Dark minimal UI deployed on Vercel.</p><div class="tags" style="margin-bottom:1.4rem"><span class="tag">Next.js</span><span class="tag">OpenAI API</span><span class="tag">Vercel</span><span class="tag">TypeScript</span></div><div class="plinks"><a href="https://github.com" class="plink">↗ GitHub</a><a href="#" class="plink">↗ Live Demo</a></div></div>
+    <div class="project-card"><div class="pnum">03 — Data Viz</div><div class="ptitle">Real-Time Analytics Dashboard</div><p class="pdesc">Live visualization dashboard with WebSocket updates, interactive D3 charts, anomaly detection, and exportable PDF reports.</p><div class="tags" style="margin-bottom:1.4rem"><span class="tag">React</span><span class="tag">D3.js</span><span class="tag">WebSockets</span><span class="tag">Python</span></div><div class="plinks"><a href="https://github.com" class="plink">↗ GitHub</a><a href="#" class="plink">↗ Live Demo</a></div></div>
+    <div class="project-card"><div class="pnum">04 — DevTools</div><div class="ptitle">URL Shortener & Analytics</div><p class="pdesc">Full-stack URL shortener with click analytics, geolocation, QR code generation, custom slugs, and clean admin dashboard. Vercel + Supabase.</p><div class="tags" style="margin-bottom:1.4rem"><span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Tailwind</span><span class="tag">QR</span></div><div class="plinks"><a href="https://github.com" class="plink">↗ GitHub</a><a href="#" class="plink">↗ Live Demo</a></div></div>
+  </div>
+</section>
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>Computer Science student</strong> with deep interest in building systems that are technically rigorous and genuinely useful. My work spans web automation, ML engineering, and data-driven applications.</p>
+      <p>Currently applying to <strong>Habib University</strong>, where I hope to deepen foundations in algorithms, systems, and applied mathematics — combining them with hands-on engineering experience.</p>
+      <p>I believe in <strong>learning by building</strong>: every project here started as a problem I wanted to solve or a concept I wanted to understand deeply.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num">10+</div><div class="stat-lbl">Projects Built</div></div>
+      <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">Languages</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Years Coding</div></div>
+      <div class="stat"><div class="stat-num">∞</div><div class="stat-lbl">Curiosity</div></div>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center">Contact</div>
+    <h2>Let's Build<br>Something.</h2>
+    <p style="font-size:.85rem;color:var(--muted);line-height:1.8;margin-top:1rem">Open to collaborations, internships, and interesting conversations. Reach out below.</p>
+    <div class="contact-links">
+      <a href="mailto:hello@example.com" class="btn btn-primary">Email Me</a>
+      <a href="https://github.com" class="btn btn-outline">GitHub</a>
+      <a href="https://linkedin.com" class="btn btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <p>© 2026 — CS Portfolio</p>
+  <p style="color:var(--accent);font-size:.68rem">Built with care. Zero frameworks harmed.</p>
+</footer>
+<script>
+const c=document.getElementById('c'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.transform=`translate(${mx-5}px,${my-5}px)`});
+(function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.transform=`translate(${rx-16}px,${ry-16}px)`;requestAnimationFrame(animRing)})();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:.1});
+document.querySelectorAll('.skill-card,.project-card,.stat').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .5s,transform .5s';obs.observe(el)});
+</script>
+</body>
+</html>
